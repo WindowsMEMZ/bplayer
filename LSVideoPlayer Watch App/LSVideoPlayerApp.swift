@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct LSVideoPlayer_Watch_AppApp: App {
+    @State var showAlert = false
+    @State var alertMessage = ""
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .alert(alertMessage, isPresented: $showAlert, actions: {})
+                .onReceive(showToast, perform: { msg in
+                    self.alertMessage = msg
+                    self.showAlert = true
+                })
         }
     }
 }

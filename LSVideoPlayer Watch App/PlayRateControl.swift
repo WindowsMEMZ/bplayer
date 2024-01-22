@@ -82,7 +82,6 @@ struct Universal的倍速开关: View {
                     .sheet(isPresented: $showSheet, content: {
                         SwipeSheet(showMe: $showSheet, content: { name,action in
                             Universal的倍速ChoiceView(name: name, action: action)
-                            
                         })
                     })
                     .onChange(of: showSheet, perform: { value in
@@ -116,7 +115,7 @@ struct Universal的倍速开关: View {
     //监听按钮点击事件，根据当前speed的值切换到下一个速度
     func switchSpeed() {
         if choicedSpeeds.count <= 1 {
-            提示OS("您当前仅开启了一倍速\n长按倍速开关选择更多")
+            showToast.send("您当前仅开启了一倍速\n长按倍速开关选择更多")
         }
         if let currentIndex = choicedSpeeds.firstIndex(of: choicedSpeed) {
             //若当前speed为数组的最后一个元素，则切换到第一个速度，否则切换到下一个速度

@@ -33,6 +33,7 @@ extension NSObject {
 //var avplayer = AVPlayer(url: .init(string: "https://video19.ifeng.com/video09/2022/11/22/p7000694441719635968-102-134025.mp4?reqtype=tsl")!)
 import Combine
 let videoTapped = PassthroughSubject<Void, Never>()
+let showToast = PassthroughSubject<String, Never>()
 class LopperOS10 {
     @AppStorage("choicedVideoPlaySpeed") var
     choicedSpeed: Double = 1.0
@@ -45,7 +46,8 @@ class LopperOS10 {
         printLog("PlayV1")
     }
     @objc func playerItemDidReachEndToast(notification: Notification) {
-        toast(.init(title: "已播放到", subTitle: "本视频结尾"))
+        showToast.send("已播放到本视频结尾")
+        
     }
 }
 enum 播放器画布:Int,Codable {
@@ -165,7 +167,7 @@ class NormalBV {
     //用于弹幕下载
     var currentCid:Int64 = 0
 }
-
+@available(watchOS 10, *)
 struct VideoPlayerPlus<V:View>: View {
     @Binding var showBlur:Bool
     //这里是进入菜单功能
@@ -213,7 +215,7 @@ struct VideoPlayerPlus<V:View>: View {
                                             
                                                 .beButton {
                                                     if doubleTaoMod.BiliPlayerDoubleTapAction != .禁用 {
-                                                        触感引擎Watch.Trigger(.click)
+                                                      
                                                     }
                                                     videoTapped.send()
                                                 }
@@ -317,15 +319,10 @@ struct VideoPlayerPlus<V:View>: View {
                         .opacity(showTouzone ? 1 : 0)
                         .allowsHitTesting(showTouzone)
                         .beButton {
-                            LionAudioToolKit.makeBanneer()
                             showTouzone = false
                             avplayer.playImmediately(atRate: Float(choicedSpeed))
                             printLog("PlayV2")
                             biliPlayerAskShowDM = true
-                            count += 1
-                            if count < 3 {
-                                提示O("左滑发现更多➡️")
-                            }
                         }
                         .buttonStyle(.plain)
                         .focusable()
@@ -368,12 +365,14 @@ struct VideoPlayerPlus<V:View>: View {
                                .font(.footnote)
                            Text("重新进入")
                 }
-                .foregroundStyle(Color.accentColor.LSgradient)
+                .foregroundStyle(Color.accentColor.gradient)
             }
         }
         .onAppear {
             volume = Double(LionAudioToolKit.currentSystemVolume())
+            
         }
+        
         .syncValue(of: choicedSpeed, perform: { _ in
             avplayer.rate = Float(choicedSpeed)
         })
@@ -612,7 +611,7 @@ struct VideoPlayerPlus<V:View>: View {
 
     func 恢复() {
        
-        withAnimationLS(.smooth) {
+        withAnimation(.smooth) {
             h = screenBound.height
             w = screenBound.width
         } completion: {
@@ -644,7 +643,7 @@ struct VideoPlayerPlus<V:View>: View {
                 break
             case .横屏:
                 
-                withAnimationLS(.smooth) {
+                withAnimation(.smooth) {
                     w = screenBound.height/9*16
                    
                 } completion: {
@@ -654,7 +653,7 @@ struct VideoPlayerPlus<V:View>: View {
                 }
             case .竖屏:
                 
-                withAnimationLS(.smooth) {
+                withAnimation(.smooth) {
                     h = screenBound.width/9*16
                     
                 } completion: {
@@ -708,7 +707,6 @@ struct OS9Corwn: ViewModifier {
             }
         }
         .syncValue(of: internalProgress, perform: { value in
-            printLog("系统版本",  WKInterfaceDevice.current().systemVersion.hasPrefix("8."))
             if !WKInterfaceDevice.current().systemVersion.hasPrefix("8.") {
                 
             } else {
@@ -745,7 +743,6 @@ struct OS9Corwn: ViewModifier {
             if activeCrownProgress {
                 self.crownVideoProgress = internalProgress/进度条滚动模型.shared.倍率
             } else {
-                printLog("音量设为",internalProgress)
                 self.volume = internalProgress
             }
         })
@@ -927,7 +924,7 @@ struct SilentModeGuilder: View {
     }
 }
 let exitPlayerbuttonTapped = PassthroughSubject<Void,Never>()
-
+@available(watchOS 10, *)
 struct ControlView: View {
     @Binding var showMenu:Bool
     @State var player:AVPlayer
@@ -1052,7 +1049,6 @@ struct ControlView: View {
                 .highPriorityGesture(
                     TapGesture()
                         .onEnded { _ in
-                            触感引擎Watch.Trigger(.click)
                             //修复点击旋转进度后音量异常的问题
                             if activeCrownProgress {
                                 恢复正常音量()
@@ -1077,7 +1073,7 @@ struct ControlView: View {
                 if loading {
                     VStack {
                         Text("视频加载中").font(.callout.bold()).shadow(radius: 2)
-                        ProgressView1(mySize: 33, small: true)
+                        ProgressView()
                     }
                 }
             }.animation(.easeIn(duration: 0.4), value: loading).allowsHitTesting(false)
@@ -1111,12 +1107,12 @@ struct ControlView: View {
                             VStack {
                                 Circle()
                                     .trim(from: 0, to: volume/100)
-                                    .stroke(Color.white.LSgradient, style: .init(lineWidth: 6, lineCap: .round, lineJoin: .round))
+                                    .stroke(Color.white.gradient, style: .init(lineWidth: 6, lineCap: .round, lineJoin: .round))
                             }
                             .rotationEffect(.degrees(-90))
                             
                             Image(systemName: "speaker.wave.3.fill")
-                                .resizable().os9Bold()
+                                .resizable().bold()
                                 .frame(width: 56, height: 56, alignment: .center)
                         }  .frame(width: 98, height: 98, alignment: .center)
                     }
@@ -1125,9 +1121,7 @@ struct ControlView: View {
                 //                .border(.green)
                 //仅在不激活时显示
                 .opacity(activeCrownProgress ? (0) : (showLBinner ? 1 : 0))
-                .syncValue(of: activeCrownProgress, perform: { i in
-                    printLog("Hi", i)
-                })
+             
                 .matchedGeometryEffect(id: "RING", in: nameSpace)
                 //                .onChange(of: activeCrownProgress, perform: { _ in
                 //                printLog("Hello")
@@ -1320,7 +1314,6 @@ struct ControlView: View {
                         if 新时间 > allTime {
                             新时间 = allTime
                         }
-                        printLog("新时间",新时间)
                         player.currentItem?.seek(to: CMTimeMakeWithSeconds(新时间, preferredTimescale: 1))//时间精度，秒
                         videoJump.send(变化)
                         //
@@ -1398,7 +1391,7 @@ struct 更大音量View: View {
 //    }
 //
 //}
-
+@available(watchOS 10, *)
 struct BottomControlView: View {
     @Binding var playing:Bool
     @AppStorage("showBiliDanmu") var openDM = true
@@ -1407,7 +1400,7 @@ struct BottomControlView: View {
     var body: some View {
         HStack {
             制作按钮(symbol: {
-                Image(systemName: playing ? "pause.fill" : "play.fill").resizable().os9Bold()
+                Image(systemName: playing ? "pause.fill" : "play.fill").resizable()
                     .frame(width: 18, height: 18, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .os10SymbolEffect(value: playing)
             })
@@ -1675,7 +1668,6 @@ struct OverlayLS<V:View>: View {
             }()
             gestureH = h
             DispatchAfter(after: 0.2, handler: {
-                printLog("滚动",下次滚动位置)
                 withAnimation(.easeOut(duration: 0.2)) {
                     myProxy?.scrollTo(下次滚动位置,anchor: .center)
                 }
@@ -1687,7 +1679,7 @@ struct OverlayLS<V:View>: View {
     @ViewBuilder
     func myMenu(proxy:ScrollViewProxy) -> some View {
         List {
-            Text("").font(.footnote).cleanListRow()
+            Text("").font(.footnote)
             
             Button(action: {
                 exitPlayerbuttonTapped.send()
@@ -1724,7 +1716,6 @@ struct OverlayLS<V:View>: View {
                         .scaledToFit()
                     Spacer()
                 }
-                .cleanListRow()
                 .buttonStyle(.borderedProminent)
                 .padding(.horizontal)
             })
@@ -1734,7 +1725,6 @@ struct OverlayLS<V:View>: View {
             if #available(watchOS 10, *) {
                 Section("倍速", content: {
                     Universal的倍速开关()
-                        .cleanListRow()
                         .autoScroll(id: "1k5fb31b")
                 })
             }
@@ -1760,16 +1750,12 @@ struct OverlayLS<V:View>: View {
                     }) .minimumScaleFactor(0.1)
                         .scaledToFit()
                 }
-                .cleanListRow()
                 .buttonStyle(.bordered)
                 .padding(.horizontal)
             })    .minimumScaleFactor(0.1)
                 .scaledToFit()
                 .autoScroll(id: "716ea3f3")
         
-
-            
-            Text("").font(.footnote).cleanListRow()
         }
         .onLoad {
             self.myProxy = proxy
@@ -1791,7 +1777,6 @@ struct OverlayLS<V:View>: View {
         if showMenu {
             let 下次滚动到 = closestRect(rects: all侧边栏Views, toPoint: screenBound.center)
             下次滚动位置 = 下次滚动到
-            printLog("记录", 下次滚动位置)
             withAnimation(.smooth) {
                 opt = 0
                 DispatchAfter(after: 0.3, handler: {

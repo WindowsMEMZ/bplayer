@@ -706,8 +706,7 @@ class 弹幕发送Mod:ObservableObject {
                         }
                     } else {
                         if 视频下载模式 {
-                            toast(.init(title: "下载弹幕出错", subTitle: err?.localizedDescription ?? ""))
-//                            提示("下载弹幕出错\(err)")
+                            showToast.send("下载弹幕出错，请添加合适的提示")
                         } else {
                             printLog("下载弹幕出错")
                         }
