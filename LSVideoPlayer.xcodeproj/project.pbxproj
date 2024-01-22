@@ -1,0 +1,577 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B46059E12B5CCBAB009942AC /* LSVideoPlayer Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B46059E02B5CCBAB009942AC /* LSVideoPlayer Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B46059E62B5CCBAB009942AC /* LSVideoPlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46059E52B5CCBAB009942AC /* LSVideoPlayerApp.swift */; };
+		B46059E82B5CCBAB009942AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46059E72B5CCBAB009942AC /* ContentView.swift */; };
+		B46059EA2B5CCBAD009942AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46059E92B5CCBAD009942AC /* Assets.xcassets */; };
+		B46059ED2B5CCBAD009942AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46059EC2B5CCBAD009942AC /* Preview Assets.xcassets */; };
+		B46059F82B5CCBFA009942AC /* LSPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46059F72B5CCBFA009942AC /* LSPlayer.swift */; };
+		B46059FA2B5CCC01009942AC /* LightningToolKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46059F92B5CCC00009942AC /* LightningToolKit.swift */; };
+		B46059FC2B5CCC4F009942AC /* FlyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46059FB2B5CCC4F009942AC /* FlyComment.swift */; };
+		B46059FF2B5CCD28009942AC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B46059FE2B5CCD28009942AC /* Alamofire */; };
+		B4605A012B5CDB19009942AC /* FlyCommentDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4605A002B5CDB19009942AC /* FlyCommentDownloader.swift */; };
+		B4605A042B5CDB82009942AC /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = B4605A032B5CDB82009942AC /* Cache */; };
+		B4605A082B5CDBD4009942AC /* ProtobufDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4605A072B5CDBD4009942AC /* ProtobufDataStruct.swift */; };
+		B4605A0B2B5CDC65009942AC /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = B4605A0A2B5CDC65009942AC /* SwiftProtobuf */; };
+		B4605A0D2B5CDC65009942AC /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = B4605A0C2B5CDC65009942AC /* SwiftProtobufPluginLibrary */; };
+		B4605A0F2B5CDC65009942AC /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = B4605A0E2B5CDC65009942AC /* protoc-gen-swift */; };
+		B4605A112B5CDC8D009942AC /* VideoPlayerWithoutControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4605A102B5CDC8D009942AC /* VideoPlayerWithoutControls.swift */; };
+		B4605A132B5CDDD9009942AC /* VolumeControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4605A122B5CDDD9009942AC /* VolumeControlView.swift */; };
+		B4605A152B5CDDFD009942AC /* OptionsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4605A142B5CDDFD009942AC /* OptionsPicker.swift */; };
+		B4605A172B5CDE37009942AC /* PlayRateControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4605A162B5CDE37009942AC /* PlayRateControl.swift */; };
+		B4605A192B5CDE60009942AC /* AppStorageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4605A182B5CDE60009942AC /* AppStorageExtension.swift */; };
+		B4605A1B2B5CE2A4009942AC /* VideoLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4605A1A2B5CE2A4009942AC /* VideoLoader.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B46059E22B5CCBAB009942AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B46059D42B5CCBAB009942AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B46059DF2B5CCBAB009942AC;
+			remoteInfo = "LSVideoPlayer Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B46059F32B5CCBAD009942AC /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				B46059E12B5CCBAB009942AC /* LSVideoPlayer Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B46059DA2B5CCBAB009942AC /* LSVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B46059E02B5CCBAB009942AC /* LSVideoPlayer Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LSVideoPlayer Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B46059E52B5CCBAB009942AC /* LSVideoPlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSVideoPlayerApp.swift; sourceTree = "<group>"; };
+		B46059E72B5CCBAB009942AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B46059E92B5CCBAD009942AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B46059EC2B5CCBAD009942AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B46059F72B5CCBFA009942AC /* LSPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPlayer.swift; sourceTree = "<group>"; };
+		B46059F92B5CCC00009942AC /* LightningToolKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LightningToolKit.swift; path = "../../Documents/开发者工具/ToolKit/LightningToolKit.swift"; sourceTree = "<group>"; };
+		B46059FB2B5CCC4F009942AC /* FlyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyComment.swift; sourceTree = "<group>"; };
+		B4605A002B5CDB19009942AC /* FlyCommentDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyCommentDownloader.swift; sourceTree = "<group>"; };
+		B4605A072B5CDBD4009942AC /* ProtobufDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtobufDataStruct.swift; sourceTree = "<group>"; };
+		B4605A102B5CDC8D009942AC /* VideoPlayerWithoutControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerWithoutControls.swift; sourceTree = "<group>"; };
+		B4605A122B5CDDD9009942AC /* VolumeControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeControlView.swift; sourceTree = "<group>"; };
+		B4605A142B5CDDFD009942AC /* OptionsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsPicker.swift; sourceTree = "<group>"; };
+		B4605A162B5CDE37009942AC /* PlayRateControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayRateControl.swift; sourceTree = "<group>"; };
+		B4605A182B5CDE60009942AC /* AppStorageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageExtension.swift; sourceTree = "<group>"; };
+		B4605A1A2B5CE2A4009942AC /* VideoLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLoader.swift; sourceTree = "<group>"; };
+		B4605A1C2B5CE528009942AC /* LSVideoPlayer-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LSVideoPlayer-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B46059DD2B5CCBAB009942AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4605A0F2B5CDC65009942AC /* protoc-gen-swift in Frameworks */,
+				B4605A0D2B5CDC65009942AC /* SwiftProtobufPluginLibrary in Frameworks */,
+				B46059FF2B5CCD28009942AC /* Alamofire in Frameworks */,
+				B4605A042B5CDB82009942AC /* Cache in Frameworks */,
+				B4605A0B2B5CDC65009942AC /* SwiftProtobuf in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B46059D32B5CCBAB009942AC = {
+			isa = PBXGroup;
+			children = (
+				B46059F92B5CCC00009942AC /* LightningToolKit.swift */,
+				B46059E42B5CCBAB009942AC /* LSVideoPlayer Watch App */,
+				B46059DB2B5CCBAB009942AC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B46059DB2B5CCBAB009942AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B46059DA2B5CCBAB009942AC /* LSVideoPlayer.app */,
+				B46059E02B5CCBAB009942AC /* LSVideoPlayer Watch App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B46059E42B5CCBAB009942AC /* LSVideoPlayer Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				B4605A1C2B5CE528009942AC /* LSVideoPlayer-Watch-App-Info.plist */,
+				B46059E52B5CCBAB009942AC /* LSVideoPlayerApp.swift */,
+				B46059E72B5CCBAB009942AC /* ContentView.swift */,
+				B4605A1A2B5CE2A4009942AC /* VideoLoader.swift */,
+				B4605A102B5CDC8D009942AC /* VideoPlayerWithoutControls.swift */,
+				B4605A142B5CDDFD009942AC /* OptionsPicker.swift */,
+				B4605A162B5CDE37009942AC /* PlayRateControl.swift */,
+				B4605A182B5CDE60009942AC /* AppStorageExtension.swift */,
+				B4605A122B5CDDD9009942AC /* VolumeControlView.swift */,
+				B46059F72B5CCBFA009942AC /* LSPlayer.swift */,
+				B46059FB2B5CCC4F009942AC /* FlyComment.swift */,
+				B4605A002B5CDB19009942AC /* FlyCommentDownloader.swift */,
+				B4605A072B5CDBD4009942AC /* ProtobufDataStruct.swift */,
+				B46059E92B5CCBAD009942AC /* Assets.xcassets */,
+				B46059EB2B5CCBAD009942AC /* Preview Content */,
+			);
+			path = "LSVideoPlayer Watch App";
+			sourceTree = "<group>";
+		};
+		B46059EB2B5CCBAD009942AC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B46059EC2B5CCBAD009942AC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B46059D92B5CCBAB009942AC /* LSVideoPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B46059F42B5CCBAD009942AC /* Build configuration list for PBXNativeTarget "LSVideoPlayer" */;
+			buildPhases = (
+				B46059D82B5CCBAB009942AC /* Resources */,
+				B46059F32B5CCBAD009942AC /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B46059E32B5CCBAB009942AC /* PBXTargetDependency */,
+			);
+			name = LSVideoPlayer;
+			productName = LSVideoPlayer;
+			productReference = B46059DA2B5CCBAB009942AC /* LSVideoPlayer.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		B46059DF2B5CCBAB009942AC /* LSVideoPlayer Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B46059F02B5CCBAD009942AC /* Build configuration list for PBXNativeTarget "LSVideoPlayer Watch App" */;
+			buildPhases = (
+				B46059DC2B5CCBAB009942AC /* Sources */,
+				B46059DD2B5CCBAB009942AC /* Frameworks */,
+				B46059DE2B5CCBAB009942AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LSVideoPlayer Watch App";
+			packageProductDependencies = (
+				B46059FE2B5CCD28009942AC /* Alamofire */,
+				B4605A032B5CDB82009942AC /* Cache */,
+				B4605A0A2B5CDC65009942AC /* SwiftProtobuf */,
+				B4605A0C2B5CDC65009942AC /* SwiftProtobufPluginLibrary */,
+				B4605A0E2B5CDC65009942AC /* protoc-gen-swift */,
+			);
+			productName = "LSVideoPlayer Watch App";
+			productReference = B46059E02B5CCBAB009942AC /* LSVideoPlayer Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B46059D42B5CCBAB009942AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					B46059D92B5CCBAB009942AC = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					B46059DF2B5CCBAB009942AC = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = B46059D72B5CCBAB009942AC /* Build configuration list for PBXProject "LSVideoPlayer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B46059D32B5CCBAB009942AC;
+			packageReferences = (
+				B46059FD2B5CCD27009942AC /* XCRemoteSwiftPackageReference "Alamofire" */,
+				B4605A022B5CDB82009942AC /* XCRemoteSwiftPackageReference "Cache" */,
+				B4605A092B5CDC65009942AC /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+			);
+			productRefGroup = B46059DB2B5CCBAB009942AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B46059D92B5CCBAB009942AC /* LSVideoPlayer */,
+				B46059DF2B5CCBAB009942AC /* LSVideoPlayer Watch App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B46059D82B5CCBAB009942AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B46059DE2B5CCBAB009942AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B46059ED2B5CCBAD009942AC /* Preview Assets.xcassets in Resources */,
+				B46059EA2B5CCBAD009942AC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B46059DC2B5CCBAB009942AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B46059FC2B5CCC4F009942AC /* FlyComment.swift in Sources */,
+				B4605A172B5CDE37009942AC /* PlayRateControl.swift in Sources */,
+				B46059F82B5CCBFA009942AC /* LSPlayer.swift in Sources */,
+				B4605A082B5CDBD4009942AC /* ProtobufDataStruct.swift in Sources */,
+				B4605A132B5CDDD9009942AC /* VolumeControlView.swift in Sources */,
+				B46059E82B5CCBAB009942AC /* ContentView.swift in Sources */,
+				B46059E62B5CCBAB009942AC /* LSVideoPlayerApp.swift in Sources */,
+				B4605A152B5CDDFD009942AC /* OptionsPicker.swift in Sources */,
+				B4605A012B5CDB19009942AC /* FlyCommentDownloader.swift in Sources */,
+				B4605A112B5CDC8D009942AC /* VideoPlayerWithoutControls.swift in Sources */,
+				B46059FA2B5CCC01009942AC /* LightningToolKit.swift in Sources */,
+				B4605A192B5CDE60009942AC /* AppStorageExtension.swift in Sources */,
+				B4605A1B2B5CE2A4009942AC /* VideoLoader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B46059E32B5CCBAB009942AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B46059DF2B5CCBAB009942AC /* LSVideoPlayer Watch App */;
+			targetProxy = B46059E22B5CCBAB009942AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B46059EE2B5CCBAD009942AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B46059EF2B5CCBAD009942AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		B46059F12B5CCBAD009942AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LSVideoPlayer Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = A8JPM89CK8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LSVideoPlayer-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = LSVideoPlayer;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lion.LSVideoPlayer.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		B46059F22B5CCBAD009942AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"LSVideoPlayer Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = A8JPM89CK8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LSVideoPlayer-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = LSVideoPlayer;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lion.LSVideoPlayer.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
+		B46059F52B5CCBAD009942AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A8JPM89CK8;
+				INFOPLIST_KEY_CFBundleDisplayName = LSVideoPlayer;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lion.LSVideoPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B46059F62B5CCBAD009942AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A8JPM89CK8;
+				INFOPLIST_KEY_CFBundleDisplayName = LSVideoPlayer;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lion.LSVideoPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B46059D72B5CCBAB009942AC /* Build configuration list for PBXProject "LSVideoPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B46059EE2B5CCBAD009942AC /* Debug */,
+				B46059EF2B5CCBAD009942AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B46059F02B5CCBAD009942AC /* Build configuration list for PBXNativeTarget "LSVideoPlayer Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B46059F12B5CCBAD009942AC /* Debug */,
+				B46059F22B5CCBAD009942AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B46059F42B5CCBAD009942AC /* Build configuration list for PBXNativeTarget "LSVideoPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B46059F52B5CCBAD009942AC /* Debug */,
+				B46059F62B5CCBAD009942AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B46059FD2B5CCD27009942AC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		B4605A022B5CDB82009942AC /* XCRemoteSwiftPackageReference "Cache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hyperoslo/Cache";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		B4605A092B5CDC65009942AC /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.25.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B46059FE2B5CCD28009942AC /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B46059FD2B5CCD27009942AC /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		B4605A032B5CDB82009942AC /* Cache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4605A022B5CDB82009942AC /* XCRemoteSwiftPackageReference "Cache" */;
+			productName = Cache;
+		};
+		B4605A0A2B5CDC65009942AC /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4605A092B5CDC65009942AC /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		B4605A0C2B5CDC65009942AC /* SwiftProtobufPluginLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4605A092B5CDC65009942AC /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobufPluginLibrary;
+		};
+		B4605A0E2B5CDC65009942AC /* protoc-gen-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4605A092B5CDC65009942AC /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = "protoc-gen-swift";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B46059D42B5CCBAB009942AC /* Project object */;
+}
