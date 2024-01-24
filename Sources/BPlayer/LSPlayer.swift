@@ -168,7 +168,7 @@ class NormalBV {
     var currentCid:Int64 = 0
 }
 @available(watchOS 10, *)
-struct VideoPlayerPlus<V:View>: View {
+public struct VideoPlayerPlus<V:View>: View {
     @Binding var showBlur:Bool
     //这里是进入菜单功能
     //关键词⬇️
