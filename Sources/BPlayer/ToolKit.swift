@@ -301,7 +301,8 @@ extension View {
 public struct SwipeSheet<V:View>: View {
     @Binding var showMe:Bool
     let screenHeight = WKInterfaceDevice.current().screenBounds.height
-    @State var 系数 = 10.0
+    @State var 系数 = 1.0
+    @State var isIniting = true
     @AppStorage("SwipeSheetApearCount") var swipeSheetApearCount = 0
     @State var startY: CGFloat?
     var content: (UUID,@escaping (CGRect) -> Void) -> V
@@ -309,19 +310,11 @@ public struct SwipeSheet<V:View>: View {
     public var body: some View {
         ZStack {
             VStack {
-                if #available(watchOS 9, *) {
-                    Image(systemName: "chevron.compact.down")
-                        .bold()
-                        .font(.title)
-                        .padding(5)
-                        .offset(y:系数*35)
-                } else {
-                    Image(systemName: "chevron.compact.down")
-                        .font(.title)
-                        .padding(5)
-                        .offset(y:系数*35)
-                }
-                Text("继续下拉以返回")
+                Image(systemName: "chevron.compact.down")
+                    .font(.title)
+                    .padding(5)
+                    .offset(y:系数*35)
+                Text("关闭")
                     .font(.caption2)
                     .offset(y:系数*35)
                 Spacer()
@@ -340,6 +333,7 @@ public struct SwipeSheet<V:View>: View {
                    }
                }
             }
+            .offset(y: isIniting ? 系数*35 : 0)
         }
         .coordinateSpace(name:name)
         .navigationBarHidden(true)
@@ -347,15 +341,16 @@ public struct SwipeSheet<V:View>: View {
         .onAppear {
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
                 系数 = 0.0
+                isIniting = false
             }
         }
     }
     func 计算手势(currentY:CGFloat) {
         if let startY {
-            if 系数 >= 1 {
+            if 系数 >= 1 && !isIniting {
                 showMe = false
             }
-            let 总量 = screenHeight/6.7//屏幕的三分之一高度
+            let 总量 = screenHeight/8
             let 向下距离 = currentY - startY
             let 系数 = 向下距离/总量
             self.系数 = 系数
