@@ -40,34 +40,34 @@ public struct LSContentView: View {
     
     public var body: some View {
         VStack {
-//            if startedLoading {
-//                if let player = videoLoader.player {
-//                    VideoPlayerPlus(showBlur: $videoLoader.show初次屏, mod: videoData, avplayer: player, listItems: {
-//                        Text("在这里插入更多视图")
-//                    })
-//                    .overlay(content: {
-//                        loadingView()
-//                    })
-//                } else {
-//                    Text("加载中")
-//                }
-//            }
-            VideoPlayerPlus(showBlur: $videoLoader.show初次屏, mod: videoData, avplayer: player, listItems: {
-                Text("在这里插入更多视图")
-            })
-            .overlay(content: {
-                loadingView()
-            })
+            if startedLoading {
+                if let player = videoLoader.player {
+                    VideoPlayerPlus(showBlur: $videoLoader.show初次屏, mod: videoData, avplayer: player, listItems: {
+                        Text("在这里插入更多视图")
+                    })
+                    .overlay(content: {
+                        loadingView()
+                    })
+                } else {
+                    Text("加载中")
+                }
+            }
+//            VideoPlayerPlus(showBlur: $videoLoader.show初次屏, mod: videoData, avplayer: player, listItems: {
+//                Text("在这里插入更多视图")
+//            })
+//            .overlay(content: {
+//                loadingView()
+//            })
         }
-//        .onAppear {
-//            startedLoading = true
-//            let videoURL = URL(string: videoUrl)!
-//            let asset = AVURLAsset(url: videoURL, options: ["User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"])
-//            videoLoader.安排播放器(with: .init(asset: asset))
-//            videoLoader.finishedLoading = {
-//                printLog("视频可以开始播放")
-//            }
-//        }
+        .onAppear {
+            startedLoading = true
+            let videoURL = URL(string: videoUrl)!
+            let asset = AVURLAsset(url: videoURL, options: ["User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"])
+            videoLoader.安排播放器(with: .init(asset: asset))
+            videoLoader.finishedLoading = {
+                printLog("视频可以开始播放")
+            }
+        }
         .onReceive(exitPlayerbuttonTapped) { _ in
             dismiss()
         }
