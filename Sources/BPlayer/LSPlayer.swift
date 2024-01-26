@@ -34,10 +34,14 @@ extension NSObject {
 import Combine
 let videoTapped = PassthroughSubject<Void, Never>()
 let showToast = PassthroughSubject<String, Never>()
-class LopperOS10 {
+public class LopperOS10 {
     @AppStorage("choicedVideoPlaySpeed") var
     choicedSpeed: Double = 1.0
     var avplayer:AVPlayer = .init()
+    
+    public init(avplayer: AVPlayer = .init()) {
+        self.avplayer = avplayer
+    }
 
     @objc func playerItemDidReachEnd(notification: Notification) {
         // 重新开始播放
@@ -50,7 +54,7 @@ class LopperOS10 {
         
     }
 }
-enum 播放器画布:Int,Codable {
+public enum 播放器画布:Int,Codable {
     case 正常 = 1
     case 全屏 = 2
     mutating func toggle() {
@@ -161,15 +165,22 @@ class LSUI注入ForVolume {
     }
 }
 
+@available(watchOS 10, *)
 @Observable
-class NormalBV {
-    var enableFlyComment:Bool = false
+public class NormalBV {
+    var enableFlyComment: Bool = false
     //用于弹幕下载
-    var currentCid:Int64 = 0
+    var currentCid: Int64 = 0
+    
+    public init(enableFlyComment: Bool = false, currentCid: Int64 = 0) {
+        self.enableFlyComment = enableFlyComment
+        self.currentCid = currentCid
+    }
 }
 @available(watchOS 10, *)
 public struct VideoPlayerPlus<V:View>: View {
     @Binding var showBlur:Bool
+    
     //这里是进入菜单功能
     //关键词⬇️
     //进入菜单
@@ -179,7 +190,7 @@ public struct VideoPlayerPlus<V:View>: View {
     //缩放支持
     //自动居中
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             ZStack {
                 ZStack {
@@ -560,7 +571,7 @@ public struct VideoPlayerPlus<V:View>: View {
     }
     @State var crownVideoProgress = 0.0
     
-    @StateObject var doubleTaoMod = BilliVideoPlayerSummerDoubleTapModel()
+    @State/*Object*/ var doubleTaoMod = BilliVideoPlayerSummerDoubleTapModel()
     @State var 激活 = true
     let onRead = PassthroughSubject<Void,Never>()
     let errorDetechTimer = Timer.publish(every: 1, tolerance: 1, on: .main, in: .default).autoconnect()
@@ -666,7 +677,7 @@ public struct VideoPlayerPlus<V:View>: View {
     @State var showTouzone = true
 }
 let 设定showCurrentDateTime = PassthroughSubject<Bool,Never>()
-enum 全屏按钮设定 {
+public enum 全屏按钮设定 {
     case 未知
     case 方形
     case 横屏
@@ -1893,10 +1904,15 @@ struct 双击操作Picker: View {
 
 
 
-class BilliVideoPlayerSummerDoubleTapModel:ObservableObject {
+public class BilliVideoPlayerSummerDoubleTapModel:ObservableObject {
     @AppStorage("BiliPlayerDoubleTapAction") var BiliPlayerDoubleTapAction:双击操作 = .禁用
-    enum 双击操作:Int,Identifiable,CaseIterable {
-        var id: Int { self.rawValue }
+    
+    public init(BiliPlayerDoubleTapAction: 双击操作 = .禁用) {
+        self.BiliPlayerDoubleTapAction = BiliPlayerDoubleTapAction
+    }
+    
+    public enum 双击操作:Int,Identifiable,CaseIterable {
+        public var id: Int { self.rawValue }
         case 禁用 = 0
         case 放大缩小 = 1
         case 暂停继续 = 2

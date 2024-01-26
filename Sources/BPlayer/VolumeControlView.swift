@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WatchKit
+@available(watchOS 6.0, *)
 struct 音量调节视图: WKInterfaceObjectRepresentable {
     typealias WKInterfaceObjectType = WKInterfaceVolumeControl
     

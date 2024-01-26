@@ -8,8 +8,10 @@
 import SwiftUI
 import AVFoundation
 
-struct ContentView: View {
-    @StateObject
+@available(watchOS 10, *)
+public struct LSContentView: View {
+    @State var videoUrl: String
+    @State/*Object*/
     var videoLoader:BiliPlayer = BiliPlayer()
     @State
     var videoData:NormalBV = NormalBV()
@@ -25,7 +27,17 @@ struct ContentView: View {
         }
     }
     @State var startedLoading = false
-    var body: some View {
+    
+    public init(videoUrl: String, videoLoader: BiliPlayer = BiliPlayer(), videoData: NormalBV = NormalBV(), player: AVPlayer = AVPlayer(), showInitLoading: Bool = true, startedLoading: Bool = false) {
+        self.videoUrl = videoUrl
+        self.videoLoader = videoLoader
+        self.videoData = videoData
+        self.player = player
+        self.showInitLoading = showInitLoading
+        self.startedLoading = startedLoading
+    }
+    
+    public var body: some View {
         VStack {
             if startedLoading {
                 if let player = videoLoader.player {
@@ -38,21 +50,16 @@ struct ContentView: View {
                 } else {
                     Text("加载中")
                 }
-            } else {
-                Button("开始加载视频", action: {
-                    startedLoading = true
-                    let videoURL = URL(string: "https://mpv.videocc.net/cf786c7a80/9/cf786c7a80f0a0a49e77f45d48aabde9_2.mp4?pid=1705814617644X1066575")!
-                    videoLoader.安排播放器(with: .init(url: videoURL))
-                    videoLoader.finishedLoading = {
-                        printLog("视频可以开始播放")
-                    }
-                })
             }
         }
-        
+        .onAppear {
+            startedLoading = true
+            let videoURL = URL(string: videoUrl)!
+            videoLoader.安排播放器(with: .init(url: videoURL))
+            videoLoader.finishedLoading = {
+                printLog("视频可以开始播放")
+            }
+        }
     }
 }
 
-#Preview {
-    ContentView()
-}

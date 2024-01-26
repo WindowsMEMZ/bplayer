@@ -9,7 +9,7 @@ import Foundation
 import AVFoundation
 import AVKit
 import SwiftUI
-class BiliPlayer: ObservableObject {
+public class BiliPlayer: ObservableObject {
     
     // MARK: - AVPlayer本体
     @Published var player:AVPlayer?
@@ -26,6 +26,22 @@ class BiliPlayer: ObservableObject {
         
         observeBuffering(of: item)
         observeLoadingFail(with: item)
+    }
+    
+    public init(player: AVPlayer? = nil, playerItem: AVPlayerItem? = nil, show初次屏: Bool = true, showBackButton: Bool = true, fpFailedToLoading: Bool = false, showLoadingUI: Bool = false, backButtonObserver: NSKeyValueObservation? = nil, 加载状态观察器: NSKeyValueObservation? = nil, finishedLoading: @escaping () -> Void = {}, run: Bool = true, playbackLikelyToKeepUpKeyPathObserver: NSKeyValueObservation? = nil, playbackBufferEmptyObserver: NSKeyValueObservation? = nil, playbackBufferFullObserver: NSKeyValueObservation? = nil) {
+        self.player = player
+        self.playerItem = playerItem
+        self.show初次屏 = show初次屏
+        self.showBackButton = showBackButton
+        self.fpFailedToLoading = fpFailedToLoading
+        self.showLoadingUI = showLoadingUI
+        self.backButtonObserver = backButtonObserver
+        self.加载状态观察器 = 加载状态观察器
+        self.finishedLoading = finishedLoading
+        self.run = run
+        self.playbackLikelyToKeepUpKeyPathObserver = playbackLikelyToKeepUpKeyPathObserver
+        self.playbackBufferEmptyObserver = playbackBufferEmptyObserver
+        self.playbackBufferFullObserver = playbackBufferFullObserver
     }
     
     deinit {
