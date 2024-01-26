@@ -244,10 +244,11 @@ public struct VideoPlayerPlus<V:View>: View {
                                                                     VStack {
                                                                         HStack {
                                                                             Image(systemName: "chevron.right")
-                                                                            Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                                            Image(systemName: "chevron.right")
+                                                                                .foregroundColor(.secondary)
                                                                             Spacer()
                                                                         }
-                                                                        Text("继续右滑进入菜单")
+                                                                        Text("菜单")
                                                                     }.padding(.leading)
                                                                         .frame(width: 50, height: 100, alignment: .center)
                                                                     
@@ -319,22 +320,21 @@ public struct VideoPlayerPlus<V:View>: View {
                             }
                             ControlView(showMenu:$showMenu,player:avplayer,volume: $volume, showLB: $showLB,crownVideoProgress: $crownVideoProgress)
                         }
-                        .blur(radius: showTouzone ? 23 : 0)
-                        ZStack {
-                            Color.touchZone
-                            Text("点击开始播放"+moreText)
-                        }
-                        .opacity(showTouzone ? 1 : 0)
-                        .allowsHitTesting(showTouzone)
-                        .beButton {
-                            showTouzone = false
-                            avplayer.playImmediately(atRate: Float(choicedSpeed))
-                            printLog("PlayV2")
-                            biliPlayerAskShowDM = true
-                        }
-                        .buttonStyle(.plain)
-                        .focusable()
-                        .modifier(OS9Corwn(volume: $volume, showLB: $showLB, crownVideoProgress: $crownVideoProgress))
+//                        ZStack {
+//                            Color.touchZone
+//                            Text("点击开始播放"+moreText)
+//                        }
+//                        .opacity(showTouzone ? 1 : 0)
+//                        .allowsHitTesting(showTouzone)
+//                        .beButton {
+//                            showTouzone = false
+//                            avplayer.playImmediately(atRate: Float(choicedSpeed))
+//                            printLog("PlayV2")
+//                            biliPlayerAskShowDM = true
+//                        }
+//                        .buttonStyle(.plain)
+//                        .focusable()
+//                        .modifier(OS9Corwn(volume: $volume, showLB: $showLB, crownVideoProgress: $crownVideoProgress))
                     }
                     
                     .frame(width: screenBound.width, height: screenBound.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -356,7 +356,6 @@ public struct VideoPlayerPlus<V:View>: View {
                         }
                     }
                 }
-                .blur(radius: showBlur ? 18 : 0)
                 .onChange(of: showMenu, perform: { _ in
                     if showMenu == false {
                         设定showCurrentDateTime.send(false)
@@ -1720,20 +1719,19 @@ struct OverlayLS<V:View>: View {
                     }
                     .minimumScaleFactor(0.1)
                     .scaledToFit()
-                    .background(Color.accentColor)
                     Spacer()
                     Button(action: {
                         playerSize = .全屏
                     }) {
-                        Label("全屏", systemImage: "arrow.up.left.and.arrow.down.right") .minimumScaleFactor(0.1)
+                        Label("全屏", systemImage: "arrow.up.left.and.arrow.down.right")
+                            .minimumScaleFactor(0.1)
                             .scaledToFit()
                     }
                     .minimumScaleFactor(0.1)
                     .scaledToFit()
-                    .background(Color.accentColor)
                     Spacer()
                 }
-                .buttonStyle(.borderedProminent)
+                .buttonStyle(.bordered)
                 .padding(.horizontal)
             })
             .autoScroll(id: "1d5fb61a")

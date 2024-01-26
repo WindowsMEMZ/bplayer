@@ -98,7 +98,6 @@ struct SyncValue<T:Equatable>: ViewModifier {
 }
 
 extension View {
-    
     ///不建议使用perform内的值！
     @ViewBuilder
     func syncValue<T:Equatable>(of:T?,perform:@escaping (T)->()) -> some View {
@@ -298,15 +297,16 @@ extension View {
         }
     }
 }
-struct SwipeSheet<V:View>: View {
+
+public struct SwipeSheet<V:View>: View {
     @Binding var showMe:Bool
     let screenHeight = WKInterfaceDevice.current().screenBounds.height
-    @State var 系数 = 0.0
+    @State var 系数 = 10.0
     @AppStorage("SwipeSheetApearCount") var swipeSheetApearCount = 0
-    @State var startY:CGFloat?
+    @State var startY: CGFloat?
     var content: (UUID,@escaping (CGRect) -> Void) -> V
     let name = UUID()
-    var body: some View {
+    public var body: some View {
         ZStack {
             VStack {
                 if #available(watchOS 9, *) {
@@ -317,7 +317,6 @@ struct SwipeSheet<V:View>: View {
                         .offset(y:系数*35)
                 } else {
                     Image(systemName: "chevron.compact.down")
-//                        .bold()
                         .font(.title)
                         .padding(5)
                         .offset(y:系数*35)
@@ -331,52 +330,25 @@ struct SwipeSheet<V:View>: View {
             .ignoresSafeArea()
             .allowsHitTesting(false)
             VStack {
-                
                 content(name) { rect in
                    let minY = rect.minY
 //                    printLog(minY)
                    if let startY {
                        计算手势(currentY: minY)
-                       
                    } else {
                        startY = minY
                    }
                }
             }
-//            ZStack {
-//                Rectangle()
-//                        .fill(Color.blue.LSgradient)
-//            }
-//                .mask {
-//                    ZStack {
-//                        VStack {
-//                            ZStack {
-//                                Color.white
-//                                Color.black
-//                                    .offset(x: 0, y: screenHeight*系数)
-//                            }
-//                            .compositingGroup()
-//                            .luminanceToAlpha()
-//                            .allowsHitTesting(false)
-//                        }
-//                        VStack {
-//                            Spacer()
-//                            Text("继续下拉以返回")
-//
-//                        }
-//                    }
-//                }
-                
-                
-//            .mask {
-//
-//
-//            }
-            
         }
         .coordinateSpace(name:name)
         .navigationBarHidden(true)
         .animation(.easeInOut, value: 系数)
+        .onAppear {
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                系数 = 0.0
+            }
+        }
     }
     func 计算手势(currentY:CGFloat) {
         if let startY {
@@ -385,13 +357,12 @@ struct SwipeSheet<V:View>: View {
             }
             let 总量 = screenHeight/6.7//屏幕的三分之一高度
             let 向下距离 = currentY - startY
-//            printLog(向下距离)
             let 系数 = 向下距离/总量
             self.系数 = 系数
         }
-        
     }
 }
+
 extension View {
     func readSize(onChange: @escaping (CGSize) -> Void) -> some View {
         background(
