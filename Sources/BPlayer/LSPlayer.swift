@@ -197,11 +197,8 @@ public struct VideoPlayerPlus<V:View>: View {
                     ZStack {
                         ZStack {
                             ScrollViewReader(content: { proxy in
-                                
                                 ZStack {
-                                    
                                     Group {
-                                        
                                         ZStack {
                                             Color.black
                                             VideoPlayerLS(player: avplayer)
@@ -358,25 +355,28 @@ public struct VideoPlayerPlus<V:View>: View {
                             Spacer()
                         }
                     }
-                    
                 }
-                .blur(radius: showBlur ? 18 : 0 )
+                .blur(radius: showBlur ? 18 : 0)
                 .onChange(of: showMenu, perform: { _ in
                     if showMenu == false {
                         设定showCurrentDateTime.send(false)
                     }
                 })
-            }
-            //🏠播放灰屏检测
-            if 显示灰色 {
-                VStack {
-                    Label("播放失败", systemImage: "visionpro.badge.exclamationmark")
-//                    Text()
-                           Text("请在左上角关闭视频后")
-                               .font(.footnote)
-                           Text("重新进入")
+                //🏠播放灰屏检测
+                if 显示灰色 {
+                    VStack {
+                        Label("播放失败", systemImage: "visionpro.badge.exclamationmark")
+                        Text("请稍后重试")
+                        Text("将在3秒后关闭")
+                            .font(.footnote)
+                            .onAppear {
+                                Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
+                                    exitPlayerbuttonTapped.send()
+                                }
+                            }
+                    }
+                    .foregroundStyle(Color.accentColor.gradient)
                 }
-                .foregroundStyle(Color.accentColor.gradient)
             }
         }
         .onAppear {
@@ -1124,8 +1124,9 @@ struct ControlView: View {
                             
                             Image(systemName: "speaker.wave.3.fill")
                                 .resizable().bold()
-                                .frame(width: 56, height: 56, alignment: .center)
-                        }  .frame(width: 98, height: 98, alignment: .center)
+                                .frame(width: 65, height: 56, alignment: .center)
+                        }
+                        .frame(width: 98, height: 98, alignment: .center)
                     }
                     
                 }
@@ -1524,12 +1525,12 @@ struct TopControlView: View {
     var body: some View {
         if true {//#available(watchOS 10, *)
             HStack {
-                制作按钮(symbol:     Image(systemName: "xmark"), action: backButtonTap)
+                制作按钮(symbol: Image(systemName: "xmark"), action: backButtonTap)
                     .padding(.leading,12.5)
                     .padding(.top,15)
                     .ignoresSafeArea(.container, edges: [.leading,.top])
                 Spacer()
-                制作按钮(symbol:    Image(systemName: "chevron.right"), action: sideBarTap)
+                制作按钮(symbol: Image(systemName: "chevron.right"), action: sideBarTap)
                     .padding(.trailing,12.5)
                     .padding(.top,15)
                     .ignoresSafeArea(.container, edges: [.trailing,.top])
@@ -1690,8 +1691,9 @@ struct OverlayLS<V:View>: View {
     @ViewBuilder
     func myMenu(proxy:ScrollViewProxy) -> some View {
         List {
-            Text("").font(.footnote)
-            
+            Text("")
+                .font(.footnote)
+                .listRowBackground(Color.clear)
             Button(action: {
                 exitPlayerbuttonTapped.send()
             }) {
@@ -1715,22 +1717,25 @@ struct OverlayLS<V:View>: View {
                         Label("正常", systemImage: "arrow.down.right.and.arrow.up.left")
                             .minimumScaleFactor(0.1)
                             .scaledToFit()
-                    } .minimumScaleFactor(0.1)
-                        .scaledToFit()
+                    }
+                    .minimumScaleFactor(0.1)
+                    .scaledToFit()
+                    .background(Color.accentColor)
                     Spacer()
                     Button(action: {
                         playerSize = .全屏
                     }) {
                         Label("全屏", systemImage: "arrow.up.left.and.arrow.down.right") .minimumScaleFactor(0.1)
                             .scaledToFit()
-                    } .minimumScaleFactor(0.1)
-                        .scaledToFit()
+                    }
+                    .minimumScaleFactor(0.1)
+                    .scaledToFit()
+                    .background(Color.accentColor)
                     Spacer()
                 }
                 .buttonStyle(.borderedProminent)
                 .padding(.horizontal)
             })
-            
             .autoScroll(id: "1d5fb61a")
             
             if #available(watchOS 10, *) {
@@ -1825,7 +1830,6 @@ extension View {
     @ViewBuilder
     func autoScroll(id:String) -> some View {
         self
-        
             .readPosition(in: .named("侧边栏"), onChange: { rect in
                 all侧边栏Views[id] = rect
             })

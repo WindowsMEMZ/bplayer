@@ -31,83 +31,80 @@ struct Universal的倍速开关: View {
     choicedSpeed: Double = 1.0
     var body: some View {
         HStack {
-            
-                
-                //弹幕开关
-                Color.touchZone
-                    .frame(width: 44, height: 44, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .overlay(content: {
-                        ZStack {
-                            Image(systemName: SFName)
-                            VStack {
+            //弹幕开关
+            Color.touchZone
+                .frame(width: 44, height: 44, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .overlay(content: {
+                    ZStack {
+                        Image(systemName: SFName)
+                        VStack {
+                            Spacer()
+                            HStack{
                                 Spacer()
-                                HStack{
-                                    Spacer()
-                                    let sfsymbol:String = {
-                                        let nSpeed = Universal的倍速.init(rawValue: choicedSpeed)
-                                        switch nSpeed {
-                                        case .零点五:
-                                            return "05.square.fill"
-                                        case .零点七五:
-                                            return "07.square.fill"
-                                        case .一点零:
-                                            return "1.square.fill"
-                                        case .一点五:
-                                            return "15.square.fill"
-                                        case .两倍:
-                                            return "2.square.fill"
-                                        case .none:
-                                            return ""
-                                        }
-                                    }()
-                                    Image(systemName:  sfsymbol)
-                                        .imageScale(.small)
-                                    
-                                }
-                                .padding([.bottom,.trailing],5)
+                                let sfsymbol:String = {
+                                    let nSpeed = Universal的倍速.init(rawValue: choicedSpeed)
+                                    switch nSpeed {
+                                    case .零点五:
+                                        return "05.square.fill"
+                                    case .零点七五:
+                                        return "07.square.fill"
+                                    case .一点零:
+                                        return "1.square.fill"
+                                    case .一点五:
+                                        return "15.square.fill"
+                                    case .两倍:
+                                        return "2.square.fill"
+                                    case .none:
+                                        return ""
+                                    }
+                                }()
+                                Image(systemName:  sfsymbol)
+                                    .imageScale(.small)
+                                
                             }
-                        }   .contentTransition(.symbolEffect(.automatic))
-                    })
-                
-                    .beButton {
-                        printLog("触摸到了按钮，当前点击")
-                        cancellableTask.cancel()
-                        if canAction {
-                            switchSpeed()
-                        } else {
-                            canAction = true
+                            .padding([.bottom,.trailing],5)
                         }
+                    }   .contentTransition(.symbolEffect(.automatic))
+                })
+            
+                .beButton {
+                    printLog("触摸到了按钮，当前点击")
+                    cancellableTask.cancel()
+                    if canAction {
+                        switchSpeed()
+                    } else {
+                        canAction = true
                     }
-                    .buttonStyle(.plain)
-                    .sheet(isPresented: $showSheet, content: {
-                        SwipeSheet(showMe: $showSheet, content: { name,action in
-                            Universal的倍速ChoiceView(name: name, action: action)
-                        })
+                }
+                .buttonStyle(.plain)
+                .sheet(isPresented: $showSheet, content: {
+                    SwipeSheet(showMe: $showSheet, content: { name,action in
+                        Universal的倍速ChoiceView(name: name, action: action)
                     })
-                    .onChange(of: showSheet, perform: { value in
-                        if value {
+                })
+                .onChange(of: showSheet, perform: { value in
+                    if value {
+                        
+                    } else {
+                        if let currentIndex = choicedSpeeds.firstIndex(of: choicedSpeed) {
                             
                         } else {
-                            if let currentIndex = choicedSpeeds.firstIndex(of: choicedSpeed) {
-                                
-                            } else {
-                                choicedSpeed = 1.0
-                            }
+                            choicedSpeed = 1.0
                         }
+                    }
+                })
+            Spacer()
+            Color.touchZone
+                .frame(width: screenBound.width-40, height: 40)
+                .overlay(content: {
+                    Button(action: {
+                        showSheet.toggle()
+                    }, label: {
+                        Text("设置")
+                            .font(.footnote)
+                            .foregroundColor(.blue)
                     })
-                Color.touchZone
-                    .frame(width: screenBound.width-40, height: 40)
-                    .overlay(content: {
-                        Button(action: {
-                            showSheet.toggle()
-                        }, label: {
-                            Text("点击左侧切换，点我设置")
-                                .font(.footnote)
-                        })
-                   
-                    })
-                //弹幕开关
-            
+                })
         }
     }
     let screenBound = WKInterfaceDevice.current().screenBounds

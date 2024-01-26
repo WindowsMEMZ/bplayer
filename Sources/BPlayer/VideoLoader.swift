@@ -9,8 +9,8 @@ import Foundation
 import AVFoundation
 import AVKit
 import SwiftUI
+
 public class BiliPlayer: ObservableObject {
-    
     // MARK: - AVPlayer本体
     @Published var player:AVPlayer?
     @Published var playerItem:AVPlayerItem?
