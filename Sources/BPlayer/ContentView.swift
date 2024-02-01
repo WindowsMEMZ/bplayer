@@ -72,6 +72,9 @@ public struct LSContentView: View {
                 printLog("视频可以开始播放")
             }
         }
+        .onDisappear {
+            bili暂停播放.send()
+        }
         .onReceive(exitPlayerbuttonTapped) { _ in
             dismiss()
         }
